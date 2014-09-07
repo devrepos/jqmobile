@@ -103,7 +103,7 @@
                               if(response.status === 'connected') {
                                $.mobile.changePage("#home");
                                localStorage.setItem("fbToken",response.authResponse.token);
-                            getInfoFB();
+                               getInfoFB();
                               } else {
                               alert('Facebook login failed: ' + response.error);
                               }
@@ -129,6 +129,12 @@
         
         document.addEventListener("deviceready",
                                   function(){
+                                  
+                                  var fbToken = localStorage.getItem("fbToken");
+                                  if (fbToken!==null){
+                                    $.mobile.changePage("#home");
+                                  }
+                                  //alert(fbToken);
                                   openFB.init({appId: '834951006536042'});
                                   //app.initialize();
                                   $( "#registro" ).click(function() {
