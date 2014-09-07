@@ -82,7 +82,7 @@
                 <div data-role="navbar" data-iconpos="left">
                     <ul>
                         <li><a href="#" data-icon="home" id="nav_home" class="ui-btn-active">Home</a></li>
-                        <li><a href="#" data-icon="star" >Salir</a></li>
+                        <li><a href="#" data-icon="star" id="nav_logout" >Salir</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div><!-- /footer -->
@@ -125,6 +125,12 @@
                    },
                    error: errorHandler});
     }
+        function logout(){
+            localStorage.removeItem("fbToken");
+            localStorage.removeItem("name");
+            localStorage.removeItem("email");
+            $.mobile.changePage("#inicio");
+        }
         
         
         document.addEventListener("deviceready",
@@ -148,7 +154,9 @@
                                                          $.mobile.changePage("#inicio");
                                                          });
                                  
-                                  
+                                  $( "#nav_logout" ).click(function() {
+                                                         logout();
+                                                         });
                                   
                                   }
                                   , false);
