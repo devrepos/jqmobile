@@ -30,19 +30,19 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div data-role="page" id="inicio" >
+        <div data-role="page" id="inicio" style="background: none repeat scroll 0 0 #f7efd9; height:100%;" >
             
             <div data-role="header">
                 <h1>CAPTURA IMAGEN</h1>
                 
             </div>
             
-            <div data-role="content" style ="background: transparent url(img/1.jpg) no-repeat  center center;">
+            <div data-role="content" style ="background: transparent url(img/1.jpg) no-repeat  center center;height 30%;">
                
-                <form id="formulario" style="margin-top:100px;"  >
+                <form id="formulario"   >
                         <input  value="facebook" type="button" data-theme="b" onclick="loginFB()"  >
                          <p style="margin-top:20px;"></p>
-                        <input name="user" id="user" placeholder="Usuario"  type="text" >
+                        <input name="user" id="user" placeholder="Usuario"  type="text" style="width: 30%;" >
                         <input type="password" id="passw" name="passw"  placeholder="Password">
                         <input data-inline="true" value="Iniciar" type="button" data-theme="b" id="enviar">
                         <input data-inline="true" value="Registro" type="button" data-theme="e" id="registro">
@@ -51,23 +51,42 @@
                 </form>
                
             </div>
-            <div style="background: none repeat scroll 0 0 #f7efd9; ;">
+            <div >
+                <div class="ui-grid-b" style="padding-left: 15px; padding-top: 20px;">
+                    <div class="ui-block-a"><div class="ui-bar " ><img src="img/decora.png" style="max-width: 90%;" ></div></div>
+                    <div class="ui-block-b"><div class="ui-bar " ><img src="img/pregunta.png" style="max-width: 90%;" ></div></div>
+                    <div class="ui-block-c"><div class="ui-bar " ><img src="img/productos.png" style="max-width: 90%;" ></div></div>
+                </div>
+            </div><!-- /footer -->
+            <!--div style="background: none repeat scroll 0 0 #f7efd9; height:100%;">
                 <div class="ui-grid-b">
                     <div class="ui-block-a"><div class="ui-bar " ><img src="img/decora.png" style="max-width: 50%;" ></div></div>
                     <div class="ui-block-b"><div class="ui-bar " ><img src="img/pregunta.png" style="max-width: 50%;" ></div></div>
                     <div class="ui-block-c"><div class="ui-bar " ><img src="img/productos.png" style="max-width: 50%;" ></div></div>
                 </div>
-            </div>
+            </div-->
         </div>
-        <div data-role="page" id="new_user">
+        <div data-role="page" id="new_user" style="background: none repeat scroll 0 0 #f7efd9; height:100%;">
             
             <div data-role="header">
                 <h1>Alta nueva</h1>
             </div>
             
-            <div data-role="content">	
+            <div data-role="content" >
                 <h2>Nuevo usuario App </h2>
                 <h3>Inserte la siguiente info </h3>
+                <form id="formulario"   >
+                   
+                        <p style="margin-top:20px;"></p>
+                        <input name="user" id="user" placeholder="email"  type="text"  >
+                        <input name="user" id="name" placeholder="Nombre"  type="text"  >
+                        <input type="password" id="passw" name="passw"  placeholder="Password">
+                       <input type="password" id="passw" name="passw"  placeholder="Repetir Password">
+                        <input data-inline="true" value="Enviar datos" type="button" data-theme="b" id="nuevo">
+                       
+                                        
+                                        
+              </form>
             </div>
             <div data-role="footer">
                 <div data-role="navbar" data-iconpos="left">
@@ -79,7 +98,7 @@
             </div><!-- /footer -->
             
         </div>
-        <div data-role="page" id="home">
+        <div data-role="page" id="home" style="background: none repeat scroll 0 0 #f7efd9; height:100%;">
             <div data-role="header">
                 <h1>Bienvenido</h1>
             </div>
@@ -89,6 +108,13 @@
                 <h3><span id="userName"></span></h3>
                 <h3><span id="userPic"></span></h3>
             </div>
+            <div >
+                <div class="ui-grid-b" style="padding-left: 15px; padding-top: 20px;">
+                    <div class="ui-block-a"><div class="ui-bar " ><img src="img/decora.png" style="max-width: 90%;" ></div></div>
+                    <div class="ui-block-b"><div class="ui-bar " ><img src="img/pregunta.png" style="max-width: 90%;" ></div></div>
+                    <div class="ui-block-c"><div class="ui-bar " ><img src="img/productos.png" style="max-width: 90%;" ></div></div>
+                </div>
+            </div><!-- /footer -->
             <div data-role="footer">
                 <div data-role="navbar" data-iconpos="left">
                     <ul>
@@ -140,7 +166,8 @@
                         localStorage.setItem("name",data.name);
                         localStorage.setItem("email",data.email);
                        $("#userName").html(data.name);
-                       $("#userPic").html(localStorage.getItem("userId"));
+                        $.mobile.changePage("#home");
+                       //$("#userPic").html(localStorage.getItem("userId"));
                        },
                        error: errorHandler});
         }
@@ -166,7 +193,8 @@
         }
         
         function errorHandler(error) {
-            alert(error.message);
+            //alert(error.message);
+            $.mobile.changePage("#inicio");
         }
         
         
@@ -175,11 +203,11 @@
                                   
                                   var fbToken = localStorage.getItem("userId");
                                   if (fbToken!==null){
-                                  var name = localStorage.getItem("name");
-                                  alert(fbToken);
+                                  //var name = localStorage.getItem("name");
+                               
                                     getInfoFB();
                                  
-                                    $.mobile.changePage("#home");
+                                    //$.mobile.changePage("#home");
                                   }
                                   //alert(fbToken);
                                  
